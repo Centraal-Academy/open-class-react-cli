@@ -1,30 +1,27 @@
 const Generator = require('yeoman-generator')
 module.exports = class extends Generator {
-  constructor (args, opts) {
-    super(args, opts)
-    this.log('constructor')
-  }
-  initializing () {
-    this.log('starting own generator')
-  }
-
-  configuring () {
-    this.log('configuring own generator')
-  }
-
   prompting () {
-    this.log('propmting generator')
-  }
-
-  writing () {
-    this.log('writing files')
-  }
-
-  install () {
-    this.log('install dependencies')
+    const questions = [
+      {
+        type: 'input',
+        name: 'appname',
+        message: 'Application name',
+        default: 'react-app'
+      },
+      {
+        type: 'input',
+        name: 'description',
+        message: 'Application description',
+        default: 'scaffolding react app'
+      }
+    ]
+    return this.prompt(questions)
+      .then(answers => {
+        console.log(answers)
+      })
   }
 
   end () {
-    this.log('This is over')
+    this.log('Scaffolding finished')
   }
 }
