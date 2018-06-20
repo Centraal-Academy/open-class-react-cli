@@ -1,0 +1,12 @@
+{
+  "name": "generator-own",
+  "version": "1.0.0",
+  "files": [
+    "generators"
+  ],
+  "author": "Joel Humberto Gómez Paredes <elmaildeldezkareid@gmail.com> (https://twitter.com/DezkaReid)",
+  "license": "MIT",
+  "dependencies": {
+    "yeoman-generator": "^2.0.5"
+  }
+}
