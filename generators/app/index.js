@@ -1,4 +1,5 @@
 const Generator = require('yeoman-generator')
+
 module.exports = class extends Generator {
   prompting () {
     const questions = [
@@ -17,8 +18,22 @@ module.exports = class extends Generator {
     ]
     return this.prompt(questions)
       .then(answers => {
-        console.log(answers)
+        this.options.answers = answers
       })
+  }
+
+  writing () {
+    this.fs.copyTpl(
+      this.templatePath('package.json'),
+      this.destinationPath('package.json'),
+      this.options.answers
+    )
+    this.fs.copyTpl(
+      this.templatePath('src/**/*.*'),
+      this.destinationPath('./src/'),
+      this.options.answers
+    )
+    this.fs.copy(this.templatePath('webpack/'), this.destinationPath('./'))
   }
 
   end () {
